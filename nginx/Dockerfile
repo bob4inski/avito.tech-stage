@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:stable-20230522
 
 RUN apt-get update && apt-get install -y nginx
 
