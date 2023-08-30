@@ -25,7 +25,7 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    ports:
-      - 18080:18080
+    # ports:
+    #   - 18080:18080
 
   
