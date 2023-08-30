@@ -20,7 +20,7 @@ ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 WORKDIR /go/src/app
 
 # Copy your Go code into the container
-COPY code/ .
+COPY .code/ .
 
 # Build and run your Go application
 CMD ["go", "run", "main.go"]
