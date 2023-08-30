@@ -106,6 +106,8 @@ func (s *Server) DelHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	
 	} else {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprint(w, "Wrong request")
 		// fmt.Fprint(w, "цеа")
 	}
 
@@ -117,9 +119,9 @@ func (s *Server) DelHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "bib", // Replace with your Redis password
-		DB:       0,     // Replace with your Redis database number
+		Addr:     "redis:6379",
+		Password: "bib", // superduper password
+		DB:       0,     // Replace with your Redis database number //0 is default
 	})
 
 	service := &ServiceImpl{
