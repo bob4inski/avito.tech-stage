@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 
+	//"crypto/tls"
+	// "context"
 	"github.com/go-chi/chi"
 	"github.com/go-redis/redis"
 )
@@ -120,8 +122,8 @@ func (s *Server) DelHandler(w http.ResponseWriter, r *http.Request) {
 		// fmt.Fprint(w, "цеа")
 	}
 
-	// w.WriteHeader(http.StatusOK)
-	// fmt.Fprint(w, "DELETE request processed")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, "DELETE request processed")
 
 }
 
@@ -157,11 +159,18 @@ func (s *Server) SetHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	rdb := redis.NewClient(&redis.Options{
+	// ctx := context.Background()
+
+	// tlsConfig := &tls.Config{
+	// 	InsecureSkipVerify: true, // Set this to true if using a self-signed certificate
+	// }
+
+	options := &redis.Options{
 		Addr:     "redis:6379",
-		Password: "bib", // superduper password
-		DB:       0,     // Replace with your Redis database number //0 is default
-	})
+		Password: "biba",
+		// TLSConfig: tlsConfig,
+	}
+	rdb := redis.NewClient(options)
 
 	service := &ServiceImpl{
 		redisClient: rdb,
