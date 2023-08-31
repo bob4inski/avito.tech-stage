@@ -65,10 +65,10 @@ func (s *Server) DelHandler(w http.ResponseWriter, r *http.Request) {
 				log.Println(err)
 				http.Error(w, "Internal Server Error\n", http.StatusInternalServerError)
 			}
-			if value == 0 {
+			if value == 1 {
 				w.WriteHeader(http.StatusOK)
 				fmt.Fprintf(w, "Удаление прошло успешно\n")
-			} else if value == 1 {
+			} else if value == 0 {
 				w.WriteHeader(http.StatusOK)
 				fmt.Fprintf(w, "Такого ключа нет\n")
 			}
