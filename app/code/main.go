@@ -23,10 +23,10 @@ func main() {
 	}
 	rdb := redis.NewClient(options)
 
-	serviceImpl := &service.ServiceImpl{
-		RedisClient: rdb,
-	}
-
+	// serviceImpl := &service.ServiceImpl{
+	// 	redisClient: rdb,
+	// }
+	serviceImpl := service.NewServiceImpl(rdb)
 	server := handlers.NewServer(serviceImpl)
 
 	r := chi.NewRouter()
