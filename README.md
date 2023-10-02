@@ -9,7 +9,7 @@
 - [main.go](./app/code/main.go)
 
 ## Запросы которые можно делать
-- set value  //not working
+- set value 
     ```bash
     curl -X POST   -H "Content-Type: application/json"   -d '{ "name": "Robert"}'   http://localhost:8089/set
     ```
